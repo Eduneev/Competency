@@ -55,6 +55,9 @@ coverage.xml
 *.mo
 *.pot
 
+#npm stuff
+node_modules
+
 # Django stuff:
 *.log
 local_settings.py
@@ -127,3 +130,19 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+npm-debug.log
+yarn-error.log
+lerna-debug.log
+node_modules
+lib
+esm
+es6
+docs/_site/
+docs/.jekyll-metadata
+docs/.jekyll-cache
+packages/react-admin/docs
+examples/**/static
+examples/**/dist
+cypress/videos
+cypress/screenshots

@@ -9,6 +9,7 @@ var products_1 = __importDefault(require("./products"));
 var commands_1 = __importDefault(require("./commands"));
 var invoices_1 = __importDefault(require("./invoices"));
 var reviews_1 = __importDefault(require("./reviews"));
+var programs_1 = __importDefault(require("./programs"));
 var finalize_1 = __importDefault(require("./finalize"));
 exports.default = (function (options) {
     if (options === void 0) { options = { serializeDate: true }; }
@@ -19,6 +20,7 @@ exports.default = (function (options) {
     db.commands = commands_1.default(db, options);
     db.invoices = invoices_1.default(db, options);
     db.reviews = reviews_1.default(db, options);
+    db.programs = programs_1.default(db, options);
     finalize_1.default(db);
     return db;
 });

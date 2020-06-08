@@ -176,6 +176,19 @@ const customEnglishMessages: TranslationMessages = {
         cohorts: {
             name: 'Cohorts',
         },
+        programs: {
+            name: 'Programs',
+            fields: {
+                cohort_id: 'Cohort',
+                name: 'Name',
+                code: 'Cohort Code',
+                department_name: 'Department Name',
+                start_year: 'Start Year',
+                intake: 'Intake',
+                accreditation_status: 'Accreditation Status',
+                outcomes: 'Program Outcomes',
+            },
+        },
         segments: {
             name: 'Segments',
             fields: {

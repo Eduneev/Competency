@@ -17,6 +17,7 @@ import { AppState } from '../types';
 
 import institute from '../institutes';
 import cohorts from '../cohorts';
+import programs from '../programs';
 
 type MenuName =
     | 'menuCatalog'
@@ -178,6 +179,16 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     dense={dense}
                 />
             </SubMenu>
+                <MenuItemLink
+                    to={'/programs'}
+                    primaryText={translate('resources.programs.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<programs.icon />}
+                    onclick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
             {isXSmall && (
                 <MenuItemLink
                     to="/configuration"

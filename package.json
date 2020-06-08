@@ -51,7 +51,7 @@
         "cheerio": "~1.0.0-rc.2",
         "concurrently": "^5.1.0",
         "cross-env": "^5.2.0",
-        "eslint": "^5.16.0",
+        "eslint": "^6.6.0",
         "eslint-config-prettier": "^4.3.0",
         "eslint-config-react-app": "^4.0.1",
         "eslint-plugin-cypress": "^2.2.1",
@@ -81,6 +81,7 @@
         "cypress"
     ],
     "dependencies": {
+        "@types/react-router-dom": "^5.1.5",
         "immutables": "0.0.0",
         "react": "^16.13.1",
         "react-admin": "^3.5.5",

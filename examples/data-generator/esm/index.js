@@ -4,6 +4,7 @@ import generateProducts from './products';
 import generateCommands from './commands';
 import generateInvoices from './invoices';
 import generateReviews from './reviews';
+import generatePrograms from './programs';
 import finalize from './finalize';
 export default (function (options) {
     if (options === void 0) { options = { serializeDate: true }; }
@@ -14,6 +15,7 @@ export default (function (options) {
     db.commands = generateCommands(db, options);
     db.invoices = generateInvoices(db, options);
     db.reviews = generateReviews(db, options);
+    db.programs = generatePrograms(db, options);
     finalize(db);
     return db;
 });

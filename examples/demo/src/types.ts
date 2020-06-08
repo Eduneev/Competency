@@ -79,8 +79,9 @@ export interface Contact {
 export interface Cohort extends Record {
     institute_id: Identifier;
     name: string;
-    start_year: number;
-    end_year: number;
+    start_date: Date;
+    end_date: Date;
+    num_programs: number;
 }
 
 export interface Program extends Record {

@@ -101,7 +101,7 @@ const CohortListMobile = ({ ids, data, basePath }) => {
                             :&nbsp;
                             <ColoredBooleanField
                                 record={data[id]}
-                                source="end_time"
+                                source="status"
                             />
                         </span>
                     </CardContent>

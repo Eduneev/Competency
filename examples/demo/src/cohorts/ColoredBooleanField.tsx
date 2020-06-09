@@ -9,7 +9,7 @@ const colored = <T extends FieldProps>(
     const now = new Date();
     const Colored = (props: T) =>
         props.record && props.source ? (
-            props.record[props.source] < now.toLocaleDateString() ? (
+            props.record[props.source] === 'Inactive' ? (
                 <span style={{ color: 'red' }}>
                     <WrappedComponent {...props} />
                 </span>

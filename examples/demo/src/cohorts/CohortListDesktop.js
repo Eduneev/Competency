@@ -45,7 +45,7 @@ const CohortListDesktop = ({ selectedRow, ...props }) => {
             <DateField source="start_date" />
             <DateField source="end_date" />
             <NumberField source="num_programs" />
-            <ColoredBooleanField source="end_date" label="Active" />
+            <ColoredBooleanField source="status" label="Active" />
         </Datagrid>
     );
 };

@@ -7,6 +7,9 @@ const getGqlResource = resource => {
     switch (resource) {
         case 'customers':
             return 'Customer';
+        
+        case 'programs':
+            return 'Programs';
 
         case 'categories':
             return 'Category';

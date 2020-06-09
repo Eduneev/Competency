@@ -16,7 +16,7 @@ export const randomDate = (minDate, maxDate) => {
     const minTs =
         minDate instanceof Date
             ? minDate.getTime()
-            : Date.now() - 5 * 365 * 24 * 60 * 60 * 1000; // 5 years
+            : Date.now() - 3 * 365 * 24 * 60 * 60 * 1000; // 5 years
     const maxTs = maxDate instanceof Date ? maxDate.getTime() : Date.now();
     const range = maxTs - minTs;
     const randomRange = faker.random.number({ max: range });

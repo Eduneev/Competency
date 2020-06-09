@@ -158,8 +158,8 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                 dense={dense}
             >
                 <MenuItemLink
-                    to={`/institute`}
-                    primaryText={translate(`resources.institute.name`, {
+                    to={`/institutes`}
+                    primaryText={translate(`resources.institutes.name`, {
                         smart_count: 2,
                     })}
                     leftIcon={<institute.icon />}

@@ -90,6 +90,22 @@ console.log(data);
   - customer_id: integer
   - rating: integer
   - comment: string
+- institutes
+  - id: integer
+  - name: string
+  - address: string
+  - zipcode: string
+  - vision: string
+  - mission: string
+  - contact: {first_name: string, last_name: string, designation: string, email: string, mobile: string}
+- cohorts
+  - id: integer
+  - institute_id: integer
+  - name: string
+  - start_date: date
+  - end_date: date
+  - num_programs: integer
+  - status: 'active' | 'inactive'
 
 ## Licence
 

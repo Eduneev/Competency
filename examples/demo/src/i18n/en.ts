@@ -172,6 +172,11 @@ const customEnglishMessages: TranslationMessages = {
         },
         institutes: {
             name: 'Institute',
+            fields: {
+                mission: 'Mission',
+                vision: 'Vision',
+                address: 'Address',
+            },
         },
         cohorts: {
             name: 'Cohort |||| Cohorts',

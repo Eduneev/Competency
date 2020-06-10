@@ -4,7 +4,8 @@ import generateProducts from './products';
 import generateCommands from './commands';
 import generateInvoices from './invoices';
 import generateReviews from './reviews';
-import finalize from './finalize';
+import generatePrograms from './programs';
+import finalize from './finalize'; 
 
 export default (options = { serializeDate: true }) => {
     const db = {};
@@ -14,6 +15,7 @@ export default (options = { serializeDate: true }) => {
     db.commands = generateCommands(db, options);
     db.invoices = generateInvoices(db, options);
     db.reviews = generateReviews(db, options);
+    db.programs = generatePrograms(db, options);
     finalize(db);
 
     return db;

@@ -27,3 +27,6 @@ export const randomDate = (minDate, maxDate) => {
 
 export const randomFloat = (min, max) =>
     parseFloat(faker.random.number({ min, max, precision: 0.01 }).toFixed(2));
+
+export const randomInteger = (min, max) =>
+    Math.floor(Math.random() * max) + min;

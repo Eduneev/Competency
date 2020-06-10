@@ -8,6 +8,7 @@ import {
     SelectInput,
     SimpleForm,
     useTranslate,
+    required,
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -46,6 +47,16 @@ const OrderEdit = props => {
                         }
                     />
                 </ReferenceInput>
+                <ReferenceInput
+                    source="customer_id"
+                    reference="customers"
+                    validate={required()}
+                >
+                    <AutocompleteInput
+                        optionText={choice => `${choice.email}`}
+                    />
+                </ReferenceInput>
+
                 <SelectInput
                     source="status"
                     choices={[

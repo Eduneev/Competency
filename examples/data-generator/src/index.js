@@ -5,6 +5,8 @@ import generateCommands from './commands';
 import generateInvoices from './invoices';
 import generateReviews from './reviews';
 import finalize from './finalize';
+import generateInsitutes from './institutes';
+import generateCohorts from './cohorts';
 
 export default (options = { serializeDate: true }) => {
     const db = {};
@@ -14,6 +16,8 @@ export default (options = { serializeDate: true }) => {
     db.commands = generateCommands(db, options);
     db.invoices = generateInvoices(db, options);
     db.reviews = generateReviews(db, options);
+    db.institutes = generateInsitutes(db, options);
+    db.cohorts = generateCohorts(db, options);
     finalize(db);
 
     return db;

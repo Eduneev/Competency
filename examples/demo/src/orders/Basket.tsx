@@ -13,7 +13,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FieldProps, AppState, Order, Product } from '../types';
 
 const useStyles = makeStyles({
-    container: { minWidth: '35em', marginLeft: '1em' },
+    container: { minWidth: '35em', marginLeft: '1.5em' },
     rightAlignedCell: { textAlign: 'right' },
     boldCell: { fontWeight: 'bold' },
 });

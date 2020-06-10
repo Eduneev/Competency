@@ -18,6 +18,8 @@ import products from './products';
 import invoices from './invoices';
 import categories from './categories';
 import reviews from './reviews';
+import institutes from './institutes';
+import cohorts from './cohorts';
 
 import dataProviderFactory from './dataProvider';
 import fakeServerFactory from './fakeServer';
@@ -85,6 +87,8 @@ const App = () => {
             <Resource name="products" {...products} />
             <Resource name="categories" {...categories} />
             <Resource name="reviews" {...reviews} />
+            <Resource name="institutes" {...institutes} />
+            <Resource name="cohorts" {...cohorts} />
         </Admin>
     );
 };

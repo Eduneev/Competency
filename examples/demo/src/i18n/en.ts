@@ -170,11 +170,24 @@ const customEnglishMessages: TranslationMessages = {
                 rejected_error: 'Error: Review not rejected',
             },
         },
-        institute: {
+        institutes: {
             name: 'Institute',
+            fields: {
+                mission: 'Mission',
+                vision: 'Vision',
+                address: 'Address',
+            },
         },
         cohorts: {
-            name: 'Cohorts',
+            name: 'Cohort |||| Cohorts',
+            fields: {
+                start_date: 'Start Date',
+                end_date: 'End Date',
+                num_programs: 'Programs',
+                active: 'Active',
+                date_gte: 'Started Since',
+                date_lte: 'Ended Before',
+            },
         },
         segments: {
             name: 'Segments',

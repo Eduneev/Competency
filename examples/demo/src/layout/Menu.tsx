@@ -23,7 +23,8 @@ type MenuName =
     | 'menuCatalog'
     | 'menuSales'
     | 'menuCustomers'
-    | 'menuManagement';
+    | 'menuManagement'
+    | 'menuProgramManagement';
 
 interface Props {
     dense: boolean;
@@ -37,6 +38,7 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
         menuSales: false,
         menuCustomers: false,
         menuManagement: false,
+        menuProgramManagement: false,
     });
     const translate = useTranslate();
     const isXSmall = useMediaQuery((theme: Theme) =>
@@ -178,7 +180,14 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     sidebarIsOpen={open}
                     dense={dense}
                 />
-            </SubMenu>
+            </SubMenu >
+            <SubMenu handleToggle={() => handleToggle('menuProgramManagement')}
+                isOpen={state.menuProgramManagement}
+                sidebarIsOpen={open}
+                name="pos.menu.programmanagement"
+                icon={<programs.icon />}
+                dense={dense}
+            >
                 <MenuItemLink
                     to={'/programs'}
                     primaryText={translate('resources.programs.name', {
@@ -189,6 +198,7 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     sidebarIsOpen={open}
                     dense={dense}
                 />
+            </SubMenu>
             {isXSmall && (
                 <MenuItemLink
                     to="/configuration"

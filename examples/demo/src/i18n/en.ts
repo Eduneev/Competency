@@ -36,6 +36,7 @@ const customEnglishMessages: TranslationMessages = {
             catalog: 'Catalog',
             customers: 'Customers',
             management: 'Management',
+            programmanagement: 'Program Management'
         },
     },
     resources: {

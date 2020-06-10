@@ -18,7 +18,12 @@ import products from './products';
 import invoices from './invoices';
 import categories from './categories';
 import reviews from './reviews';
+<<<<<<< HEAD
 import programs from './programs';
+=======
+import institutes from './institutes';
+import cohorts from './cohorts';
+>>>>>>> 7fc003b8c7b4ba6fbfec69d6ddc7bea1ede4c6b5
 
 import dataProviderFactory from './dataProvider';
 import fakeServerFactory from './fakeServer';
@@ -86,7 +91,12 @@ const App = () => {
             <Resource name="products" {...products} />
             <Resource name="categories" {...categories} />
             <Resource name="reviews" {...reviews} />
+<<<<<<< HEAD
             <Resource name="programs" {...programs} />
+=======
+            <Resource name="institutes" {...institutes} />
+            <Resource name="cohorts" {...cohorts} />
+>>>>>>> 7fc003b8c7b4ba6fbfec69d6ddc7bea1ede4c6b5
         </Admin>
     );
 };

@@ -1,9 +1,11 @@
 import InstituteIcon from '@material-ui/icons/School';
-import CohortList from '../cohorts/CohortList';
+import InstituteShow from './InstituteShow';
+import InstituteList from './InstituteList';
 //import ProductEdit from './ProductEdit';
 //import InstituteCreate from './InstituteCreate';
 
 export default {
     icon: InstituteIcon,
-    list: CohortList,
+    show: InstituteShow,
+    list: InstituteList,
 };

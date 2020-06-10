@@ -3,17 +3,22 @@ import {
     DateInput,
     Filter,
     SearchInput,
-    ReferenceField,
-    SelectInput,
+    ReferenceInput,
+    AutocompleteInput,
 } from 'react-admin';
 
 const CohortFilter = props => {
     return (
         <Filter {...props}>
             <SearchInput source="q" alwaysOn />
-            <ReferenceField source="cohort_id" reference="cohorts" allowEmpty>
-                <SelectInput source="name" />
-            </ReferenceField>
+            <ReferenceInput
+                source="id"
+                label="Name"
+                reference="cohorts"
+                allowEmpty
+            >
+                <AutocompleteInput source="name" optionText="name" />
+            </ReferenceInput>
             <DateInput source="date_gte" />
             <DateInput source="date_lte" />
         </Filter>

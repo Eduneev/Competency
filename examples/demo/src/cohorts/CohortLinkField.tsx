@@ -10,7 +10,7 @@ const CohortLinkField: FC<FieldProps<Cohort>> = props =>
 
 CohortLinkField.defaultProps = {
     source: 'id',
-    addLabel: true,
+    label: 'Name',
 };
 
 export default CohortLinkField;

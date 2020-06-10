@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Datagrid, DateField, NumberField } from 'react-admin';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-
+import rowStyle from './rowStyle';
 import InstituteReferenceField from '../institutes/InstituteReferenceField';
 import ColoredBooleanField from './ColoredBooleanField';
 
@@ -29,9 +29,11 @@ const useListStyles = makeStyles({
 
 const CohortListDesktop = ({ selectedRow, ...props }) => {
     const classes = useListStyles();
+    const theme = useTheme();
     return (
         <Datagrid
             rowClick="edit"
+            rowStyle={rowStyle(selectedRow, theme)}
             classes={{
                 headerRow: classes.headerRow,
                 headerCell: classes.headerCell,
@@ -41,7 +43,7 @@ const CohortListDesktop = ({ selectedRow, ...props }) => {
             {...props}
         >
             <CohortLinkField />
-            <InstituteReferenceField link={false} />
+            <InstituteReferenceField />
             <DateField source="start_date" />
             <DateField source="end_date" />
             <NumberField source="num_programs" />

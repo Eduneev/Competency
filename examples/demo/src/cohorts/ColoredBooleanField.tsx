@@ -6,15 +6,14 @@ import { FieldProps } from '../types';
 const colored = <T extends FieldProps>(
     WrappedComponent: ComponentType<T>
 ): ComponentType<T> => {
-    const now = new Date();
     const Colored = (props: T) =>
         props.record && props.source ? (
-            props.record[props.source] === 'Inactive' ? (
-                <span style={{ color: 'red' }}>
+            props.record[props.source] ? (
+                <span style={{ color: 'green' }}>
                     <WrappedComponent {...props} />
                 </span>
             ) : (
-                <span style={{ color: 'green' }}>
+                <span style={{ color: 'red' }}>
                     <WrappedComponent {...props} />
                 </span>
             )

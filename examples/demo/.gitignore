@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 
+# examples
+/lib
+/esm
+
 # testing
 /coverage
 

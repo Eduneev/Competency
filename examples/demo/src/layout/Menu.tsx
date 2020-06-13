@@ -18,6 +18,7 @@ import { AppState } from '../types';
 import institute from '../institutes';
 import cohorts from '../cohorts';
 import programs from '../programs';
+import courses from '../courses';
 
 type MenuName =
     | 'menuCatalog'
@@ -194,6 +195,17 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                         smart_count: 2,
                     })}
                     leftIcon={<programs.icon />}
+                    onclick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
+
+                <MenuItemLink
+                    to={'/courses'}
+                    primaryText={translate('resources.courses.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<courses.icon />}
                     onclick={onMenuClick}
                     sidebarIsOpen={open}
                     dense={dense}

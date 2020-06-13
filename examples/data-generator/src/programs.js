@@ -1,41 +1,39 @@
-import { date, name, lorem, random } from 'faker/locale/en'; 
-import { randomFloat, weightedBoolean } from './utils'; 
-var cohort_id = 0;
-var array = [];
-function randomNumber(min, max) {
-    return Math.random() * (max - min) + min;
-}
+import { lorem } from 'faker/locale/en';
+import { weightedArrayElement, randomInteger } from './utils';
 
+/*
 function generate_outcomes() {
-    var i;
-    for (i = 0; i < 10; i++) {
-        array.push(random.word());
+    var array = [];
+    for (let i = 0; i < 6; i++) {
+        array.push(lorem.sentence());
     }
-} 
-export default (function (db, _a) {
-    var serializeDate = _a.serializeDate;
-    return Array.from(Array(900).keys()).map(function (id) {
-        var department_name = lorem.text();
-        var code = Math.round(randomFloat());
-        var accreditation_status = random.words();
-        var start_year = randomNumber(2000, 2020);
-        var intake = Math.round(randomFloat());
-        var outcomes= generate_outcomes();
-        var first_name = name.firstName();
-        var last_name = name.lastName();
-        var name = first_name.concat(" ", last_name); 
+    return array;
+}
+*/
+
+export default (db, { serializeDate }) =>
+    Array.from(Array(30).keys()).map(id => {
+        var department_name = lorem.words();
+        var accreditation_status = weightedArrayElement(
+            [
+                'Applying First Time',
+                'Provisional Status for 2-3 years',
+                'Granted accreditation for 5/6 years',
+                'Not Accredited',
+            ],
+            [5, 1, 2, 10]
+        );
+        var start_year = randomInteger(2000, 2019);
+        var intake = randomInteger(100, 500);
+        var name = lorem.words();
+
         return {
             id: id,
-            cohort_id: cohort_id++, 
-            first_name: first_name,
-            last_name: last_name,
+            institute_id: 0,
             name: name,
             department_name: department_name,
-            code: code,
             accreditation_status: accreditation_status,
             start_year: start_year,
             intake: intake,
-            outcomes: outcomes, 
         };
     });
-}); 

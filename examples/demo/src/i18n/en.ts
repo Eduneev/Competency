@@ -36,7 +36,7 @@ const customEnglishMessages: TranslationMessages = {
             catalog: 'Catalog',
             customers: 'Customers',
             management: 'Management',
-            programmanagement: 'Program Management'
+            programmanagement: 'Program Management',
         },
     },
     resources: {
@@ -193,9 +193,7 @@ const customEnglishMessages: TranslationMessages = {
         programs: {
             name: 'Programs',
             fields: {
-                cohort_id: 'Cohort',
                 name: 'Name',
-                code: 'Cohort Code',
                 department_name: 'Department Name',
                 start_year: 'Start Year',
                 intake: 'Intake',

@@ -101,11 +101,27 @@ console.log(data);
 - cohorts
   - id: integer
   - institute_id: integer
+  - program_id: integer
   - name: string
   - start_date: date
   - end_date: date
   - num_programs: integer
-  - status: 'active' | 'inactive'
+  - status: boolean
+- programs
+  - id: integer
+  - institute_id: integer
+  - department_name: string
+  - start_year: date
+  - intake: integer
+  - accreditation_status: string
+- programoutcomes
+  - id: integer
+  - program_id: integer
+  - description: string
+- courseoutcomes
+  - id: integer
+  - course_id: integer
+  - description: string
 
 ## Licence
 

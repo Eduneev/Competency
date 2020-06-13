@@ -1,57 +1,87 @@
 import * as React from 'react';
-import {
-    AutocompleteInput,
-    Datagrid,
-    DateInput,
-    Filter,
-    List,
-    ReferenceInput,
-    SearchInput,
-    TextField,
-    TextInput,
-} from 'react-admin';
-import {
-    makeStyles,
-    useMediaQuery,
-} from '@material-ui/core';
+import { Fragment, useCallback } from 'react';
+import classnames from 'classnames';
+import { BulkDeleteButton, List } from 'react-admin';
+import { Route, useHistory } from 'react-router-dom';
+import { useMediaQuery, makeStyles } from '@material-ui/core';
+import ProgramListMobile from './ProgramListMobile';
+import ProgramListDesktop from './ProgramListDesktop';
+import ProgramFilter from './ProgramFilter';
+//import ReviewEdit from './ReviewEdit';
 
-const ProgramFilter = props => (
-    <Filter {...props}>
-        <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="cohort_id" reference="cohorts">
-            <AutocompleteInput
-                optionText={choice =>
-                    choice.department_name
-                        ? `${choice.department_name}`
-                        : ''
-                }
-            />
-        </ReferenceInput>
-        <DateInput source="start_year" />
-    </Filter>
+const ReviewsBulkActionButtons = props => (
+    <Fragment>
+        <BulkDeleteButton {...props} />
+    </Fragment>
 );
 
-const useDatagridStyles = makeStyles({
-    total: { fontWeight: 'bold' },
-});
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+    list: {
+        flexGrow: 1,
+        transition: theme.transitions.create(['all'], {
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginRight: 0,
+    },
+    listWithDrawer: {
+        marginRight: 400,
+    },
+    drawerPaper: {
+        zIndex: 100,
+    },
+}));
 
-const ProgramList = ({ classes, ...props }) => (
-    <List
-        {...props}
-        sort={{ field: 'start_year', order: 'DESC' }} 
-        perPage={25}
-        filters={<ProgramFilter />}
-    >
-        <Datagrid {...props}> 
-            <TextField source= "cohort_id"/>
-            <TextField source= "department_name"/>
-            <TextField source= "code"/>
-            <TextField source= "accreditation_status"/>
-            <TextField source= "name"/>
-            <TextField source= "start_year"/>
-            <TextField source= "outcomes"/>
-        </Datagrid> 
-    </List>
-);
+const CohortList = props => {
+    const classes = useStyles();
+    const isXSmall = useMediaQuery(theme => theme.breakpoints.down('xs'));
+    /*
+    const history = useHistory();
 
-export default ProgramList;
+    const handleClose = useCallback(() => {
+        history.push('/cohorts');
+    }, [history]);
+    */
+
+    return (
+        <div className={classes.root}>
+            <Route path="/program/:id">
+                {({ match }) => {
+                    const isMatch = !!(
+                        match &&
+                        match.params &&
+                        match.params.id !== 'create'
+                    );
+
+                    return (
+                        <Fragment>
+                            <List
+                                {...props}
+                                className={classnames(classes.list)}
+                                bulkActionButtons={<ReviewsBulkActionButtons />}
+                                filters={<ProgramFilter />}
+                                perPage={25}
+                                sort={{ field: 'start_year', order: 'DESC' }}
+                            >
+                                {isXSmall ? (
+                                    <ProgramListMobile />
+                                ) : (
+                                    <ProgramListDesktop
+                                        selectedRow={
+                                            isMatch &&
+                                            parseInt(match.params.id, 10)
+                                        }
+                                    />
+                                )}
+                            </List>
+                        </Fragment>
+                    );
+                }}
+            </Route>
+        </div>
+    );
+};
+
+export default CohortList;

@@ -9,6 +9,8 @@ import finalize from './finalize';
 import generateInsitutes from './institutes';
 import generateCohorts from './cohorts';
 import generateProgramOutcomes from './programoutcomes';
+import generateCourses from './courses';
+import generateCourseOutcomes from './courseoutcomes';
 
 export default (options = { serializeDate: true }) => {
     const db = {};
@@ -19,9 +21,11 @@ export default (options = { serializeDate: true }) => {
     db.invoices = generateInvoices(db, options);
     db.reviews = generateReviews(db, options);
     db.programs = generatePrograms(db, options);
+    db.courses = generateCourses(db, options);
     db.institutes = generateInsitutes(db, options);
     db.cohorts = generateCohorts(db, options);
     db.programoutcomes = generateProgramOutcomes(db, options);
+    db.courseoutcomes = generateCourseOutcomes(db, options);
     finalize(db);
 
     return db;

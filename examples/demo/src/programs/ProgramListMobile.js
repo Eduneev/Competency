@@ -4,18 +4,18 @@ import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
-import CohortLinkField from './CohortLinkField';
 import {
-    DateField,
     EditButton,
     NumberField,
     TextField,
     useTranslate,
+    ReferenceManyField,
+    ChipField,
+    SingleFieldList,
 } from 'react-admin';
 
 import InstituteReferenceField from '../institutes/InstituteReferenceField';
-import ProgramReferenceField from '../programs/ProgramReferenceField';
-import ColoredBooleanField from './ColoredBooleanField';
+import ColoredNumberField from './ColoredNumberField';
 
 const useListStyles = makeStyles(theme => ({
     card: {
@@ -37,9 +37,18 @@ const useListStyles = makeStyles(theme => ({
         alignItems: 'center',
         margin: '0.5rem 0',
     },
+    accreditation: {
+        fontWeight: 'bold',
+    },
+    clamp: {
+        display: '-webkit-box',
+        '-webkit-line-clamp': 2,
+        '-webkit-box-orient': 'vertical',
+        overflow: 'hidden',
+    },
 }));
 
-const CohortListMobile = ({ ids, data, basePath }) => {
+const ProgramListMobile = ({ ids, data, basePath }) => {
     const translate = useTranslate();
     const classes = useListStyles();
     return (
@@ -50,15 +59,16 @@ const CohortListMobile = ({ ids, data, basePath }) => {
                         title={
                             <div className={classes.cardTitleContent}>
                                 <span>
-                                    {translate('resources.cohorts.name', 1)}
+                                    {translate('resources.programs.name', 1)}
                                     :&nbsp;
-                                    <CohortLinkField
+                                    <TextField
                                         record={data[id]}
                                         basePath={basePath}
+                                        source="name"
                                     />
                                 </span>
                                 <EditButton
-                                    resource="cohorts"
+                                    resource="programs"
                                     basePath={basePath}
                                     record={data[id]}
                                 />
@@ -74,43 +84,55 @@ const CohortListMobile = ({ ids, data, basePath }) => {
                             />
                         </span>
                         <span className={classes.cardContentRow}>
-                            {translate('resources.programs.name', 1)}:&nbsp;
-                            <ProgramReferenceField
+                            {translate(
+                                'resources.programs.fields.department_name',
+                                1
+                            )}
+                            :&nbsp;
+                            <TextField
                                 record={data[id]}
-                                basePath={basePath}
+                                source="department_name"
                             />
                         </span>
                         <span className={classes.cardContentRow}>
-                            {translate('resources.cohorts.fields.start_date')}
-                            :&nbsp;
-                            <DateField record={data[id]} source="start_date" />
-                        </span>
-                        <span className={classes.cardContentRow}>
-                            {translate('resources.cohorts.fields.end_date')}
-                            :&nbsp;
-                            <DateField record={data[id]} source="end_date" />
-                        </span>
-                        <span className={classes.cardContentRow}>
-                            {translate('resources.cohorts.fields.num_programs')}
+                            {translate('resources.programs.fields.start_year')}
                             :&nbsp;
                             <NumberField
                                 record={data[id]}
-                                source="num_programs"
-                                className={classes.total}
+                                source="start_year"
                             />
                         </span>
                         <span className={classes.cardContentRow}>
-                            {translate('resources.commands.fields.status')}
+                            {translate('resources.programs.fields.intake')}
                             :&nbsp;
-                            <TextField source="status" record={data[id]} />
-                        </span>
-                        <span className={classes.cardContentRow}>
-                            {translate('resources.cohorts.fields.active')}
-                            :&nbsp;
-                            <ColoredBooleanField
+                            <ColoredNumberField
                                 record={data[id]}
-                                source="status"
+                                source="intake"
                             />
+                        </span>
+                        <span className={classes.cardContentRow}>
+                            {translate(
+                                'resources.programs.fields.accreditation_status'
+                            )}
+                            :&nbsp;
+                            <TextField
+                                record={data[id]}
+                                source="accreditation_status"
+                                className={classes.accreditation}
+                            />
+                        </span>
+                        <span className={classes.cardContentRow}>
+                            <ReferenceManyField
+                                record={data[id]}
+                                basePath={basePath}
+                                reference="programoutcomes"
+                                target="program_id"
+                                className={classes.clamp}
+                            >
+                                <SingleFieldList>
+                                    <ChipField source="description" />
+                                </SingleFieldList>
+                            </ReferenceManyField>
                         </span>
                     </CardContent>
                 </Card>
@@ -119,9 +141,9 @@ const CohortListMobile = ({ ids, data, basePath }) => {
     );
 };
 
-CohortListMobile.defaultProps = {
+ProgramListMobile.defaultProps = {
     data: {},
     ids: [],
 };
 
-export default CohortListMobile;
+export default ProgramListMobile;

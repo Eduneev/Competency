@@ -36,6 +36,7 @@ const customEnglishMessages: TranslationMessages = {
             catalog: 'Catalog',
             customers: 'Customers',
             management: 'Management',
+            programmanagement: 'Program Management',
         },
     },
     resources: {
@@ -187,6 +188,17 @@ const customEnglishMessages: TranslationMessages = {
                 active: 'Active',
                 date_gte: 'Started Since',
                 date_lte: 'Ended Before',
+            },
+        },
+        programs: {
+            name: 'Programs',
+            fields: {
+                name: 'Name',
+                department_name: 'Department Name',
+                start_year: 'Start Year',
+                intake: 'Intake',
+                accreditation_status: 'Accreditation Status',
+                outcomes: 'Program Outcomes',
             },
         },
         segments: {

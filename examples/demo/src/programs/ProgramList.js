@@ -9,7 +9,7 @@ import ProgramListDesktop from './ProgramListDesktop';
 import ProgramFilter from './ProgramFilter';
 //import ReviewEdit from './ReviewEdit';
 
-const ReviewsBulkActionButtons = props => (
+const ProgramsBulkActionButtons = props => (
     <Fragment>
         <BulkDeleteButton {...props} />
     </Fragment>
@@ -60,9 +60,11 @@ const CohortList = props => {
                             <List
                                 {...props}
                                 className={classnames(classes.list)}
-                                bulkActionButtons={<ReviewsBulkActionButtons />}
+                                bulkActionButtons={
+                                    <ProgramsBulkActionButtons />
+                                }
                                 filters={<ProgramFilter />}
-                                perPage={25}
+                                perPage={15}
                                 sort={{ field: 'start_year', order: 'DESC' }}
                             >
                                 {isXSmall ? (

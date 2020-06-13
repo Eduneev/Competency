@@ -23,7 +23,6 @@ type MenuName =
     | 'menuCatalog'
     | 'menuSales'
     | 'menuCustomers'
-    | 'menuManagement'
     | 'menuProgramManagement';
 
 interface Props {
@@ -37,7 +36,6 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
         menuCatalog: false,
         menuSales: false,
         menuCustomers: false,
-        menuManagement: false,
         menuProgramManagement: false,
     });
     const translate = useTranslate();
@@ -152,36 +150,18 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                 sidebarIsOpen={open}
                 dense={dense}
             />
-            <SubMenu
-                handleToggle={() => handleToggle('menuManagement')}
-                isOpen={state.menuManagement}
+            <MenuItemLink
+                to={`/institutes`}
+                primaryText={translate(`resources.institutes.name`, {
+                    smart_count: 2,
+                })}
+                leftIcon={<institute.icon />}
+                onClick={onMenuClick}
                 sidebarIsOpen={open}
-                name="pos.menu.management"
-                icon={<institute.icon />}
                 dense={dense}
-            >
-                <MenuItemLink
-                    to={`/institutes`}
-                    primaryText={translate(`resources.institutes.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<institute.icon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-                <MenuItemLink
-                    to={`/cohorts`}
-                    primaryText={translate(`resources.cohorts.name`, {
-                        smart_count: 2,
-                    })}
-                    leftIcon={<cohorts.icon />}
-                    onClick={onMenuClick}
-                    sidebarIsOpen={open}
-                    dense={dense}
-                />
-            </SubMenu >
-            <SubMenu handleToggle={() => handleToggle('menuProgramManagement')}
+            />
+            <SubMenu
+                handleToggle={() => handleToggle('menuProgramManagement')}
                 isOpen={state.menuProgramManagement}
                 sidebarIsOpen={open}
                 name="pos.menu.programmanagement"
@@ -195,6 +175,16 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     })}
                     leftIcon={<programs.icon />}
                     onclick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to={`/cohorts`}
+                    primaryText={translate(`resources.cohorts.name`, {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<cohorts.icon />}
+                    onClick={onMenuClick}
                     sidebarIsOpen={open}
                     dense={dense}
                 />

@@ -14,6 +14,7 @@ import {
 } from 'react-admin';
 
 import InstituteReferenceField from '../institutes/InstituteReferenceField';
+import ProgramReferenceField from '../programs/ProgramReferenceField';
 import ColoredBooleanField from './ColoredBooleanField';
 
 const useListStyles = makeStyles(theme => ({
@@ -68,6 +69,13 @@ const CohortListMobile = ({ ids, data, basePath }) => {
                         <span className={classes.cardContentRow}>
                             {translate('resources.institutes.name', 1)}:&nbsp;
                             <InstituteReferenceField
+                                record={data[id]}
+                                basePath={basePath}
+                            />
+                        </span>
+                        <span className={classes.cardContentRow}>
+                            {translate('resources.programs.name', 1)}:&nbsp;
+                            <ProgramReferenceField
                                 record={data[id]}
                                 basePath={basePath}
                             />

@@ -4,6 +4,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import { ShowButton, TextField, useTranslate, List } from 'react-admin';
+import InstituteShow from './InstituteShow';
 
 const useListStyles = makeStyles(theme => ({
     card: {
@@ -37,7 +38,11 @@ const Grid = ({ ids, data, basePath }) => {
     const translate = useTranslate();
     const classes = useListStyles();
     return (
-        <div style={{ margin: '1.5em' }}>
+        <div
+            rowClick="expand"
+            expand={<InstituteShow />}
+            style={{ margin: '1.5em' }}
+        >
             {ids.map(id => (
                 <Card key={id} className={classes.card}>
                     <CardHeader

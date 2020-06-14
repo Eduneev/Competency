@@ -1,7 +1,7 @@
 import { lorem, random } from 'faker/locale/en';
 
 export default (db, { serializeDate }) =>
-    Array.from(Array(300).keys()).map(id => {
+    Array.from(Array(500).keys()).map(id => {
         const course = random.arrayElement(db.courses);
 
         var outcome = lorem.sentence();

@@ -200,6 +200,17 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     sidebarIsOpen={open}
                     dense={dense}
                 />
+
+                <MenuItemLink
+                    to={'/courses'}
+                    primaryText={translate('resources.courses.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<courses.icon />}
+                    onclick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
             </SubMenu>
             {isXSmall && (
                 <MenuItemLink

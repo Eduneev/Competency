@@ -191,7 +191,7 @@ const customEnglishMessages: TranslationMessages = {
             },
         },
         programs: {
-            name: 'Programs',
+            name: 'Program |||| Programs',
             fields: {
                 name: 'Name',
                 department_name: 'Department Name',
@@ -199,6 +199,15 @@ const customEnglishMessages: TranslationMessages = {
                 intake: 'Intake',
                 accreditation_status: 'Accreditation Status',
                 outcomes: 'Program Outcomes',
+            },
+        },
+        courses: {
+            name: 'Course |||| Courses',
+            fields: {
+                name: 'Name',
+                code: 'Code',
+                semester: 'Semester',
+                outcomes: 'Course Outcomes',
             },
         },
         segments: {

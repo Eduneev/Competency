@@ -4,17 +4,18 @@ import classnames from 'classnames';
 import { BulkDeleteButton, List } from 'react-admin';
 import { Route, useHistory } from 'react-router-dom';
 import ProgramReferenceField from '../programs/ProgramReferenceField';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import {
-    Datagrid,
-    NumberField,
-    TextField,
-    ReferenceManyField,
-    SingleFieldList,
-    ChipField,
-} from 'react-admin';
+import { useMediaQuery, makeStyles } from '@material-ui/core';
+import CourseListMobile from './CourseListMobile';
+import CourseListDesktop from './CourseListDesktop';
+import CourseFilter from './CourseFilter';
 
-const useListStyles = makeStyles({
+const ReviewsBulkActionButtons = props => (
+    <Fragment>
+        <BulkDeleteButton {...props} />
+    </Fragment>
+);
+
+const useStyles = makeStyles({
     headerRow: {
         borderLeftColor: 'white',
         borderLeftWidth: 5,
@@ -40,37 +41,55 @@ const useListStyles = makeStyles({
     },
 });
 
+const CourseList = props => {
+    const classes = useStyles();
+    const isXSmall = useMediaQuery(theme => theme.breakpoints.down('xs'));
+    /*
+    const history = useHistory();
 
-const CourseList = ({ selectedRow, ...props }) => {
-    const classes = useListStyles();
-    const theme = useTheme();
+    const handleClose = useCallback(() => {
+        history.push('/cohorts');
+    }, [history]);
+    */
+
     return (
-    <List {...props}>
-        <Datagrid rowClick="edit"
-            classes={{
-                headerRow: classes.headerRow,
-                headerCell: classes.headerCell,
-                rowCell: classes.rowCell,
-            }}
-            optimized
-            {...props}>
-            <TextField source="id" />
-            <TextField source="name" />
-            <ProgramReferenceField />
-            <TextField source="code" />
-            <TextField source="semester" />
-            <ReferenceManyField
-                label="Outcomes"
-                reference="courseoutcomes"
-                target="course_id"
-            >
-                <SingleFieldList>
-                    <ChipField source="description" />
-                </SingleFieldList>
-            </ReferenceManyField>
-        </Datagrid>
-    </List>
+        <div className={classes.root}>
+            <Route path="/course/:id">
+                {({ match }) => {
+                    const isMatch = !!(
+                        match &&
+                        match.params &&
+                        match.params.id !== 'create'
+                    );
+
+                    return (
+                        <Fragment>
+                            <List
+                                {...props}
+                                className={classnames(classes.list)}
+                                bulkActionButtons={<ReviewsBulkActionButtons />}
+                                filters={<CourseFilter />}
+                                perPage={25}
+                                // sort={{ field: 'start_year', order: 'DESC' }}
+                            >
+                                {isXSmall ? (
+                                    <CourseListMobile />
+                                ) : (
+                                    <CourseListDesktop
+                                        selectedRow={
+                                            isMatch &&
+                                            parseInt(match.params.id, 10)
+                                        }
+                                    />
+                                )}
+                            </List>
+                        </Fragment>
+                    );
+                }}
+            </Route>
+        </div>
     );
 };
 
 export default CourseList; 
+

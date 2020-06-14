@@ -1,18 +1,17 @@
-import { lorem } from 'faker/locale/en';
-import { weightedArrayElement, randomInteger } from './utils';
+import { lorem, random } from 'faker/locale/en';
 
-var sem = ['Fall', 'Spring', 'Summer']
+var sem = ['Fall', 'Spring', 'Summer'];
 
 export default (db, { serializeDate }) =>
-    Array.from(Array(30).keys()).map(id => {
+    Array.from(Array(300).keys()).map(id => {
         var name = lorem.words();
-        var code = Math.round(randomInteger(10000, 99999));
-        var semester = sem[Math.floor(Math.random() * sem.length)]; 
+        var semester = sem[Math.floor(Math.random() * sem.length)];
+
+        const program = random.arrayElement(db.programs);
         return {
             id: id,
-            program_id: 0,
+            program_id: program.id,
             name: name,
-            code: code,
             semester: semester,
         };
     });

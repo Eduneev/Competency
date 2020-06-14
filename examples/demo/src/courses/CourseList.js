@@ -2,8 +2,7 @@ import * as React from 'react';
 import { Fragment } from 'react';
 import classnames from 'classnames';
 import { BulkDeleteButton, List } from 'react-admin';
-import { Route, useHistory } from 'react-router-dom';
-import ProgramReferenceField from '../programs/ProgramReferenceField';
+import { Route } from 'react-router-dom';
 import { useMediaQuery, makeStyles } from '@material-ui/core';
 import CourseListMobile from './CourseListMobile';
 import CourseListDesktop from './CourseListDesktop';
@@ -15,42 +14,28 @@ const ReviewsBulkActionButtons = props => (
     </Fragment>
 );
 
-const useStyles = makeStyles({
-    headerRow: {
-        borderLeftColor: 'white',
-        borderLeftWidth: 5,
-        borderLeftStyle: 'solid',
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
     },
-    headerCell: {
-        padding: '6px 8px 6px 8px',
+    list: {
+        flexGrow: 1,
+        transition: theme.transitions.create(['all'], {
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginRight: 0,
     },
-    rowCell: {
-        padding: '6px 8px 6px 8px',
+    listWithDrawer: {
+        marginRight: 400,
     },
-    comment: {
-        maxWidth: '18em',
-        overflow: 'hidden',
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
+    drawerPaper: {
+        zIndex: 100,
     },
-    clamp: {
-        display: '-webkit-box',
-        '-webkit-line-clamp': 3,
-        '-webkit-box-orient': 'vertical',
-        overflow: 'hidden',
-    },
-});
+}));
 
 const CourseList = props => {
     const classes = useStyles();
     const isXSmall = useMediaQuery(theme => theme.breakpoints.down('xs'));
-    /*
-    const history = useHistory();
-
-    const handleClose = useCallback(() => {
-        history.push('/cohorts');
-    }, [history]);
-    */
 
     return (
         <div className={classes.root}>

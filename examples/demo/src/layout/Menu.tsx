@@ -189,7 +189,6 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                     sidebarIsOpen={open}
                     dense={dense}
                 />
-
                 <MenuItemLink
                     to={'/courses'}
                     primaryText={translate('resources.courses.name', {

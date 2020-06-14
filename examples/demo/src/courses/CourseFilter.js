@@ -25,15 +25,12 @@ const CourseFilter = props => {
                 reference="courses"
                 allowEmpty
             >
-                <AutocompleteInput
-                    source="semester"
-                    optionText=""
-                />
+                <AutocompleteInput source="semester" optionText="" />
             </ReferenceInput>
             <DateInput source="date_gte" />
             <DateInput source="date_lte" />
         </Filter>
     );
-}; 
+};
 
 export default CourseFilter;

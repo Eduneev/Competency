@@ -1,4 +1,4 @@
-import CourseIcon from '@material-ui/icons/Note';
+import CourseIcon from '@material-ui/icons/Bookmarks';
 import CourseList from './CourseList';
 
 export default {

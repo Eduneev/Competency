@@ -191,7 +191,7 @@ const customEnglishMessages: TranslationMessages = {
             },
         },
         programs: {
-            name: 'Programs',
+            name: 'Program |||| Programs',
             fields: {
                 name: 'Name',
                 department_name: 'Department Name',
@@ -202,11 +202,11 @@ const customEnglishMessages: TranslationMessages = {
             },
         },
         courses: {
-            name: 'Courses',
+            name: 'Course |||| Courses',
             fields: {
                 name: 'Name',
                 code: 'Code',
-                Semester: 'Semester',
+                semester: 'Semester',
                 outcomes: 'Course Outcomes',
             },
         },

@@ -1,20 +1,14 @@
 import * as React from 'react';
-import { Fragment } from 'react';
-import classnames from 'classnames';
-import {  List } from 'react-admin';
+import { List } from 'react-admin';
 import ProgramReferenceField from '../programs/ProgramReferenceField';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
     Datagrid,
-    NumberField,
     TextField,
     ReferenceManyField,
     SingleFieldList,
     ChipField,
 } from 'react-admin';
-import rowStyle from './rowStyle';
-import ColoredNumberField from './ColoredNumberField';
-
 
 const useListStyles = makeStyles({
     headerRow: {
@@ -42,19 +36,17 @@ const useListStyles = makeStyles({
     },
 });
 
-
 const CourseListDesktop = ({ selectedRow, ...props }) => {
     const classes = useListStyles();
     const theme = useTheme();
     return (
-    <List {...props}>
-        <Datagrid rowClick="edit"
+        <Datagrid
+            rowClick="edit"
             classes={{
                 headerRow: classes.headerRow,
                 headerCell: classes.headerCell,
                 rowCell: classes.rowCell,
             }}
-            //rowStyle={rowStyle(selectedRow, theme)}
             optimized
             {...props}
         >
@@ -65,15 +57,14 @@ const CourseListDesktop = ({ selectedRow, ...props }) => {
                 label="Outcomes"
                 reference="courseoutcomes"
                 target="course_id"
-                className={classes.clamp} 
+                className={classes.clamp}
             >
                 <SingleFieldList>
                     <ChipField source="description" />
                 </SingleFieldList>
             </ReferenceManyField>
         </Datagrid>
-    </List>
     );
 };
 
-export default CourseListDesktop; 
+export default CourseListDesktop;

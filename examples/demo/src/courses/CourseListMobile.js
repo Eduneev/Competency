@@ -12,10 +12,9 @@ import {
     ReferenceManyField,
     ChipField,
     SingleFieldList,
-} from 'react-admin'; 
+} from 'react-admin';
 
 import ProgramReferenceField from '../programs/ProgramReferenceField';
-import ColoredNumberField from './ColoredNumberField'; 
 
 const useListStyles = makeStyles(theme => ({
     card: {
@@ -84,15 +83,9 @@ const CourseListMobile = ({ ids, data, basePath }) => {
                             />
                         </span>
                         <span className={classes.cardContentRow}>
-                            {translate(
-                                'resources.courses.fields.code',
-                                1
-                            )}
+                            {translate('resources.courses.fields.code', 1)}
                             :&nbsp;
-                            <TextField
-                                record={data[id]}
-                                source="code"
-                            />
+                            <TextField record={data[id]} source="code" />
                         </span>
                         <span className={classes.cardContentRow}>
                             {translate('resources.courses.fields.semester')}

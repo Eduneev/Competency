@@ -54,19 +54,14 @@ const CourseList = props => {
                                 className={classnames(classes.list)}
                                 bulkActionButtons={<ReviewsBulkActionButtons />}
                                 filters={<CourseFilter />}
-                                perPage={25}
-                                // sort={{ field: 'start_year', order: 'DESC' }}
+                                perPage={15}
+                                sort={{ field: 'id', order: 'ASC' }}
                             >
-                                {isXSmall ? (
-                                    <CourseListMobile />
-                                ) : (
-                                    <CourseListDesktop
-                                        selectedRow={
-                                            isMatch &&
-                                            parseInt(match.params.id, 10)
-                                        }
-                                    />
-                                )}
+                                <CourseListDesktop
+                                    selectedRow={
+                                        isMatch && parseInt(match.params.id, 10)
+                                    }
+                                />
                             </List>
                         </Fragment>
                     );
@@ -76,5 +71,4 @@ const CourseList = props => {
     );
 };
 
-export default CourseList; 
-
+export default CourseList;

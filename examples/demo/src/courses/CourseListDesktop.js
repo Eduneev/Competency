@@ -54,18 +54,18 @@ const CourseListDesktop = ({ selectedRow, ...props }) => {
                 headerCell: classes.headerCell,
                 rowCell: classes.rowCell,
             }}
-            rowStyle={rowStyle(selectedRow, theme)}
+            //rowStyle={rowStyle(selectedRow, theme)}
             optimized
             {...props}
         >
             <TextField source="name" />
             <ProgramReferenceField />
-            <TextField source="code" />
             <TextField source="semester" />
             <ReferenceManyField
                 label="Outcomes"
                 reference="courseoutcomes"
                 target="course_id"
+                className={classes.clamp} 
             >
                 <SingleFieldList>
                     <ChipField source="description" />

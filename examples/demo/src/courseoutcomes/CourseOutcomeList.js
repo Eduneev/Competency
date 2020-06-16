@@ -7,11 +7,7 @@ import {
     TextField,
     CardActions,
     CreateButton,
-    EditButton,
 } from 'react-admin';
-import { Route } from 'react-router-dom';
-import { Drawer } from '@material-ui/core';
-import CourseOutcomeCreate from './CourseOutcomeCreate';
 
 const useFragmentStyle = makeStyles({
     root: {
@@ -41,7 +37,7 @@ class FragmentList extends React.Component {
         return (
             <Fragment className={classes.container}>
                 <div>
-                    <Datagrid rowClick="edit"> 
+                    <Datagrid rowClick="edit">
                         <TextField source="description" />
                     </Datagrid>
                 </div>

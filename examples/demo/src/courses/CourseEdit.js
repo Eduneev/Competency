@@ -28,7 +28,6 @@ const useEditStyles = makeStyles({
 
 const CourseEdit = props => {
     const classes = useEditStyles();
-
     return (
         <Edit
             title={<CourseTitle />}

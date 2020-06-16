@@ -7,7 +7,12 @@ Competency Portal for Universities
 To Run the project run yarn in root folder
 
 ```
+npm install react-admin
 yarn
+```
+To build data-generator folder when you make a change
+```
+make build-data-generator
 ```
 To run frontend, either in root folder run
 ```

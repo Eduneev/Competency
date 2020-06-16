@@ -203,6 +203,7 @@ const customEnglishMessages: TranslationMessages = {
         },
         courses: {
             name: 'Course |||| Courses',
+            title: '%{reference}',
             fields: {
                 name: 'Name',
                 code: 'Code',

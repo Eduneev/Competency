@@ -39,7 +39,7 @@ const CourseList = props => {
 
     return (
         <div className={classes.root}>
-            <Route path="/course/:id">
+            <Route path="/courses/:id">
                 {({ match }) => {
                     const isMatch = !!(
                         match &&
@@ -55,13 +55,19 @@ const CourseList = props => {
                                 bulkActionButtons={<ReviewsBulkActionButtons />}
                                 filters={<CourseFilter />}
                                 perPage={15}
+                                rowClick="edit"
                                 sort={{ field: 'id', order: 'ASC' }}
                             >
-                                <CourseListDesktop
-                                    selectedRow={
-                                        isMatch && parseInt(match.params.id, 10)
-                                    }
-                                />
+                                {isXSmall ? (
+                                    <CourseListMobile />
+                                ) : (
+                                    <CourseListDesktop
+                                        selectedRow={
+                                            isMatch &&
+                                            parseInt(match.params.id, 10)
+                                        }
+                                    />
+                                )}
                             </List>
                         </Fragment>
                     );

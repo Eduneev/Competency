@@ -113,7 +113,7 @@ export interface ProgramOutcome {
     description: string;
 }
 
-export interface CourseOutcome {
+export interface CourseOutcome extends Record {
     course_id: Identifier;
     description: string;
 }

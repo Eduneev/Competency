@@ -212,6 +212,9 @@ const customEnglishMessages: TranslationMessages = {
                 outcomes: 'Course Outcomes',
             },
         },
+        courseoutcomes: {
+            name: 'Course Outcomes',
+        },
         segments: {
             name: 'Segments',
             fields: {

@@ -9,7 +9,7 @@ import {
     required,
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
-import CourseOutcomeList from '../courseoutcomes/CourseOutcomeList';
+import CourseOutcome from './CourseOutcome';
 
 const CourseTitle = ({ record }) => {
     const translate = useTranslate();
@@ -28,11 +28,12 @@ const useEditStyles = makeStyles({
 
 const CourseEdit = props => {
     const classes = useEditStyles();
+
     return (
         <Edit
             title={<CourseTitle />}
             classes={classes}
-            aside={<CourseOutcomeList />}
+            aside={<CourseOutcome />}
             {...props}
         >
             <SimpleForm>

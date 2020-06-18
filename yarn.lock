@@ -11000,7 +11000,7 @@ ra-data-graphql@^3.5.5:
     lodash "~4.17.5"
     pluralize "~7.0.0"
 
-ra-data-simple-rest@^3.0.0:
+ra-data-simple-rest@^3.5.5:
   version "3.5.5"
   resolved "https://registry.yarnpkg.com/ra-data-simple-rest/-/ra-data-simple-rest-3.5.5.tgz#ecd23eacf6a0c3bc4c06239b56489eda86ab664d"
   integrity sha512-9xMcWUAsoDtQFGA3PoTVg2Xqta/NNzrmIIxkRejxhlSWXLi2uGlG+MW//3FOyZdWK03AEq8wuQY6T2kRjZ8mGA==

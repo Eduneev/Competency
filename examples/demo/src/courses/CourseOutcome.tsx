@@ -10,10 +10,12 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
-import { useTranslate, useQueryWithStore } from 'react-admin';
+import { useTranslate, useQueryWithStore, CreateButton } from 'react-admin';
 import { CourseOutcome, FieldProps, Course } from '../types';
 import { IconButton } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
+import CourseOutcomeCreate from '../courseoutcomes/CourseOutcomeCreate'; 
+import courseoutcomes from '../courseoutcomes';
 
 const useStyles = makeStyles({
     root: {
@@ -66,6 +68,7 @@ const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
     return (
         <Paper className={classes.container}>
             <CardHeader title={translate('resources.courseoutcomes.name')} />
+            <CreateButton/> 
 
             <List dense={true}>
                 {outcomes.map((record: CourseOutcome) => (
@@ -73,7 +76,7 @@ const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
                         key={record.id}
                         button
                         component={Link}
-                        to={`/courseoutcome/${record.id}`}
+                        to={`/courseoutcomes/${record.id}`}
                     >
                         <ListItemIcon>
                             <StarIcon />

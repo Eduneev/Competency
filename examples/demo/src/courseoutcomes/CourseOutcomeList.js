@@ -41,7 +41,7 @@ class FragmentList extends React.Component {
         return (
             <Fragment className={classes.container}>
                 <div>
-                    <Datagrid>
+                    <Datagrid rowClick="edit"> 
                         <TextField source="description" />
                     </Datagrid>
                 </div>

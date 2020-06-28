@@ -7,6 +7,9 @@ import {
     SaveButton,
     DeleteButton,
     Toolbar,
+    required,
+    ReferenceInput,
+    AutocompleteInput,
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStyles } from '@material-ui/core';
@@ -26,9 +29,11 @@ const useEditStyles = makeStyles({
     root: { alignItems: 'flex-start' },
 });
 
-const CourseOutcomeEdit = props => {
+const CourseOutcomeEdit = ({ ...props }) => {
     const classes = useEditStyles();
+
     console.log(props);
+    const redirect = (basePath, id, data) => `/courses/${data.course_id}`;
 
     const toolbarStyles = {
         toolbar: {
@@ -39,15 +44,24 @@ const CourseOutcomeEdit = props => {
 
     const CustomToolbar = withStyles(toolbarStyles)(props => (
         <Toolbar {...props}>
-            <SaveButton redirect={'/courses/:course_id'} />
+            <SaveButton />
             <DeleteButton />
         </Toolbar>
     ));
 
     return (
         <Edit title={<CourseOutcomeTitle />} classes={classes} {...props}>
-            <SimpleForm toolbar={<CustomToolbar />}>
-                <TextInput source="description" />
+            <SimpleForm toolbar={<CustomToolbar />} redirect={redirect}>
+                <ReferenceInput
+                    source="course_id"
+                    reference="courses"
+                    validate={required()}
+                >
+                    <AutocompleteInput
+                        optionText={choice => `${choice.name}`}
+                    />
+                </ReferenceInput>
+                <TextInput validate={required()} source="description" />
             </SimpleForm>
         </Edit>
     );

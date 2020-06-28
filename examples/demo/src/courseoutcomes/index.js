@@ -6,6 +6,6 @@ import CourseOutcomeEdit from './CourseOutcomeEdit';
 export default {
     icon: CourseOutcomeIcon,
     //list: CourseOutcomeList,
-    create: CourseOutcomeCreate,
+    //create: CourseOutcomeCreate,
     edit: CourseOutcomeEdit,
 };

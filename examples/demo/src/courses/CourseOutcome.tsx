@@ -9,12 +9,12 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { Link, Route, useHistory } from 'react-router-dom';
 import { useTranslate, useQueryWithStore, CreateButton } from 'react-admin';
 import { CourseOutcome, FieldProps, Course } from '../types';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Drawer } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
-import CourseOutcomeCreate from '../courseoutcomes/CourseOutcomeCreate'; 
+import CourseOutcomeCreate from '../courseoutcomes/CourseOutcomeCreate';
 import courseoutcomes from '../courseoutcomes';
 
 const useStyles = makeStyles({
@@ -23,33 +23,21 @@ const useStyles = makeStyles({
     },
     container: { minWidth: '40em', marginLeft: '1.5em' },
     rightAlignedCell: { textAlign: 'right' },
+    drawerPaper: {
+        zIndex: 100,
+    },
+    drawerContent: {
+        width: 300,
+    },
 });
 
 const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
     const classes = useStyles();
     const translate = useTranslate();
-
-    /*
-
-    const fetchCourseOutcomes = useCallback(async () => {
-        const { data: courseoutcomes } = await dataProvider.getMany(
-            'courseoutcomes',
-            {
-                course_id: course_id
-            }
-        );
-        const outcomes = courseoutcomes;
-        setState(state => ({
-            ...state,
-            outcomes: outcomes,
-        }));
-    }, [course_id, dataProvider]);
-
-    useEffect(() => {
-        fetchCourseOutcomes();
-    }, [version]); // eslint-disable-line react-hooks/exhaustive-deps
-
-    */
+    const history = useHistory();
+    const handleClose = useCallback(() => {
+        history.push('/course/:id');
+    }, [history]);
 
     const { loaded, error, data: outcomes } = useQueryWithStore({
         type: 'getList',
@@ -68,8 +56,11 @@ const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
     return (
         <Paper className={classes.container}>
             <CardHeader title={translate('resources.courseoutcomes.name')} />
-            <CreateButton/> 
-
+            <CreateButton
+                button
+                component={Link}
+                to={'/courseoutcomes/create'}
+            />
             <List dense={true}>
                 {outcomes.map((record: CourseOutcome) => (
                     <ListItem
@@ -90,6 +81,17 @@ const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
                     </ListItem>
                 ))}
             </List>
+            <Route path="/courseoutcomes/create">
+                {({ match }) => (
+                    <Drawer open={!!match} anchor="right" onClose={handleClose}>
+                        <CourseOutcomeCreate
+                            className={classes.drawerContent}
+                            onCancel={handleClose}
+                            {...outcomes}
+                        />
+                    </Drawer>
+                )}
+            </Route>
         </Paper>
     );
 };

@@ -1,12 +1,9 @@
 import * as React from 'react';
 import {
-    AutocompleteInput,
     TextInput,
     Edit,
-    ReferenceInput,
     SimpleForm,
     useTranslate,
-    required,
     SaveButton,
     DeleteButton,
     Toolbar,
@@ -31,6 +28,8 @@ const useEditStyles = makeStyles({
 
 const CourseOutcomeEdit = props => {
     const classes = useEditStyles();
+    console.log(props);
+
     const toolbarStyles = {
         toolbar: {
             display: 'flex',
@@ -40,18 +39,14 @@ const CourseOutcomeEdit = props => {
 
     const CustomToolbar = withStyles(toolbarStyles)(props => (
         <Toolbar {...props}>
-            <SaveButton redirect= {"/courses/${courses.id}"} />
+            <SaveButton redirect={'/courses/:course_id'} />
             <DeleteButton />
         </Toolbar>
     ));
 
     return (
-        <Edit
-            title={<CourseOutcomeTitle />}
-            classes={classes} 
-            {...props}
-        >
-            <SimpleForm toolbar = {< CustomToolbar />}>
+        <Edit title={<CourseOutcomeTitle />} classes={classes} {...props}>
+            <SimpleForm toolbar={<CustomToolbar />}>
                 <TextInput source="description" />
             </SimpleForm>
         </Edit>

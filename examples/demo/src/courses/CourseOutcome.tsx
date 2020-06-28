@@ -36,7 +36,7 @@ const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
     const translate = useTranslate();
     const history = useHistory();
     const handleClose = useCallback(() => {
-        history.push('/course/:id');
+        history.push('/courses/:id');
     }, [history]);
 
     const { loaded, error, data: outcomes } = useQueryWithStore({
@@ -59,7 +59,10 @@ const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
             <CreateButton
                 button
                 component={Link}
-                to={'/courseoutcomes/create'}
+                to={{
+                    pathname: '/courseoutcomes/create',
+                    state: { course_id: record && record.id },
+                }}
             />
             <List dense={true}>
                 {outcomes.map((record: CourseOutcome) => (
@@ -67,7 +70,10 @@ const CourseOutcomes: FC<FieldProps<Course>> = ({ record }) => {
                         key={record.id}
                         button
                         component={Link}
-                        to={`/courseoutcomes/${record.id}`}
+                        to={{
+                            pathname: `/courseoutcomes/${record.id}`,
+                            state: { course_id: record && record.id },
+                        }}
                     >
                         <ListItemIcon>
                             <StarIcon />

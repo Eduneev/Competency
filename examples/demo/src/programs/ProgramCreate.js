@@ -1,20 +1,11 @@
 import * as React from 'react';
 import {
-    AutocompleteInput,
-    BooleanInput,
-    DateInput,
-    Edit,
-    ReferenceInput,
     SelectInput,
     SimpleForm,
     useTranslate,
-    required,
     TextInput,
-    NumberField,
-    TextField,
-    ColoredNumberField,
-    InstituteReferenceField,
     NumberInput,
+    Create,
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -35,10 +26,10 @@ const useEditStyles = makeStyles({
     root: { alignItems: 'flex-start' },
 });
 
-const ProgramEdit = props => {
+const ProgramCreate = props => {
     const classes = useEditStyles();
     return (
-        <Edit
+        <Create
             //title={<ProgramTitle />}
             title="Programs"
             //aside={<Basket />}
@@ -47,6 +38,7 @@ const ProgramEdit = props => {
         >
             <SimpleForm>
                 <TextInput source="name" />
+                <TextInput source="institute" />
                 {//<InstituteReferenceField />
 }
                 <TextInput source="department_name" />
@@ -89,8 +81,8 @@ const ProgramEdit = props => {
                 {//<BooleanInput source="returned" />
 }
             </SimpleForm>
-        </Edit>
+        </Create>
     );
 }; 
 
-export default ProgramEdit;
+export default ProgramCreate;

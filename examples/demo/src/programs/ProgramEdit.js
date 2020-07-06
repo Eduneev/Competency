@@ -39,7 +39,8 @@ const ProgramEdit = props => {
     const classes = useEditStyles();
     return (
         <Edit
-            title={<ProgramTitle />}
+            //title={<ProgramTitle />}
+            title="Programs"
             //aside={<Basket />}
             classes={classes}
             {...props}

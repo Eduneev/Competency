@@ -1,35 +1,36 @@
 import * as React from 'react';
 import {
-    Edit,
     SelectInput,
     SimpleForm,
-    useTranslate,
     TextInput,
     NumberInput,
+    ReferenceInput,
+    AutocompleteInput,
+    required,
+    Create,
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
-
-const ProgramTitle = ({ record }) => {
-    const translate = useTranslate();
-    return (
-        <span>
-            {translate('resources.programs.title', {
-                reference: record.name,
-            })}
-        </span>
-    );
-};
 
 const useEditStyles = makeStyles({
     root: { alignItems: 'flex-start' },
 });
 
-const ProgramEdit = props => {
+const ProgramCreate = props => {
     const classes = useEditStyles();
     return (
-        <Edit title={<ProgramTitle />} classes={classes} {...props}>
+        <Create title="Program Create" classes={classes} {...props}>
             <SimpleForm>
-                <TextInput source="name" />
+                <TextInput validate={required()} source="name" />
+                <ReferenceInput
+                    label="Institute"
+                    source="institute_id"
+                    reference="institutes"
+                    validate={required()}
+                >
+                    <AutocompleteInput
+                        optionText={choice => `${choice.name}`}
+                    />
+                </ReferenceInput>
                 <TextInput source="department_name" />
                 <NumberInput source="start_year" />
                 <NumberInput source="intake" />
@@ -53,8 +54,8 @@ const ProgramEdit = props => {
                     optionText="name"
                 />
             </SimpleForm>
-        </Edit>
+        </Create>
     );
 };
 
-export default ProgramEdit;
+export default ProgramCreate;

@@ -47,7 +47,11 @@ const CourseEdit = props => {
                         optionText={choice => `${choice.name}`}
                     />
                 </ReferenceInput>
-                <ReferenceInput source="id" reference="courses">
+                <ReferenceInput
+                    source="id"
+                    label="Semester"
+                    reference="courses"
+                >
                     <AutocompleteInput
                         optionText={choice => `${choice.semester}`}
                     />

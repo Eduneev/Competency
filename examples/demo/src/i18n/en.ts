@@ -200,6 +200,7 @@ const customEnglishMessages: TranslationMessages = {
                 accreditation_status: 'Accreditation Status',
                 outcomes: 'Program Outcomes',
             },
+            title: 'Program %{reference}',
         },
         courses: {
             name: 'Course |||| Courses',

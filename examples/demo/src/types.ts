@@ -86,7 +86,7 @@ export interface Cohort extends Record {
 }
 
 export interface Program extends Record {
-    university_id: Identifier;
+    institute_id: Identifier;
     name: string;
     code: string;
     department_name: string;

@@ -2,25 +2,14 @@ import * as React from 'react';
 import {
     SelectInput,
     SimpleForm,
-    useTranslate,
     TextInput,
     NumberInput,
+    ReferenceInput,
+    AutocompleteInput,
+    required,
     Create,
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
-
-//import Basket from './Basket';
-
-const ProgramTitle = ({ record }) => {
-    const translate = useTranslate();
-    return (
-        <span>
-            {translate('resources.commands.title', {
-                reference: record.reference,
-            })}
-        </span>
-    );
-};
 
 const useEditStyles = makeStyles({
     root: { alignItems: 'flex-start' },
@@ -29,60 +18,44 @@ const useEditStyles = makeStyles({
 const ProgramCreate = props => {
     const classes = useEditStyles();
     return (
-        <Create
-            //title={<ProgramTitle />}
-            title="Programs"
-            //aside={<Basket />}
-            classes={classes}
-            {...props}
-        >
+        <Create title="Program Create" classes={classes} {...props}>
             <SimpleForm>
-                <TextInput source="name" />
-                <TextInput source="institute" />
-                {//<InstituteReferenceField />
-}
-                <TextInput source="department_name" />
-                <NumberInput source="start_year" />
-                {//<ColoredNumberField source="intake" />
-}
-                <NumberInput source="intake" />
-                {//<TextField source="accreditation_status" />
-}
-                {/* <ReferenceInput source="institute" reference="customers">
-                    <AutocompleteInput
-                        optionText={choice =>
-                            `${choice.first_name} ${choice.last_name}`
-                        }
-                    />
-                </ReferenceInput>
+                <TextInput validate={required()} source="name" />
                 <ReferenceInput
-                    source="department name"
-                    reference="customers"
+                    label="Institute"
+                    source="institute_id"
+                    reference="institutes"
                     validate={required()}
                 >
                     <AutocompleteInput
-                        optionText={choice => `${choice.email}`}
+                        optionText={choice => `${choice.name}`}
                     />
-                </ReferenceInput> */}
-
+                </ReferenceInput>
+                <TextInput source="department_name" />
+                <NumberInput source="start_year" />
+                <NumberInput source="intake" />
                 <SelectInput
-                    source="accreditation status"
+                    source="accreditation_status"
                     choices={[
-                        { id: 'notaccredited', name: 'Not Accredited' },
-                        { id: 'accredited', name: 'Accredited' },
-                        { id: 'firsttime', name: 'Applying First Time' },
                         {
-                            id: 'unknown',
-                            name: 'unknown',
-                            disabled: true,
+                            id: 'Applying First Time',
+                            name: 'Applying First Time',
                         },
+                        {
+                            id: 'Provisional Status for 2-3 years',
+                            name: 'Provisional Status for 2-3 years',
+                        },
+                        {
+                            id: 'Granted accreditation for 5/6 years',
+                            name: 'Granted accreditation for 5/6 years',
+                        },
+                        { id: 'Not Accredited', name: 'Not Accredited' },
                     ]}
+                    optionText="name"
                 />
-                {//<BooleanInput source="returned" />
-}
             </SimpleForm>
         </Create>
     );
-}; 
+};
 
 export default ProgramCreate;

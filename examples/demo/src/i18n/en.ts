@@ -204,12 +204,20 @@ const customEnglishMessages: TranslationMessages = {
         },
         courses: {
             name: 'Course |||| Courses',
+            title: '%{reference}',
             fields: {
                 name: 'Name',
                 code: 'Code',
                 semester: 'Semester',
                 outcomes: 'Course Outcomes',
             },
+        },
+        courseoutcomes: {
+            name: 'Course Outcomes',
+            title: '%{reference}',
+            fields: {
+                description: 'Description',
+            }
         },
         segments: {
             name: 'Segments',

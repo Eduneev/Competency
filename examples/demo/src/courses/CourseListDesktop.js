@@ -9,6 +9,7 @@ import {
     SingleFieldList,
     ChipField,
 } from 'react-admin';
+import CourseOutcomeCreate from '../courseoutcomes/CourseOutcomeCreate';
 
 const useListStyles = makeStyles({
     headerRow: {

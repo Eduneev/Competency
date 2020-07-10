@@ -24,11 +24,12 @@ const CourseOutcomeCreateToolbar = translate(({ translate, ...props }) => (
 ));
 
 const CourseOutcomeCreate = ({ onCancel, ...props }) => {
-    if (props.location.state === 'undefined') return null;
-
-    const course_id = props.location.state['course_id'];
-    console.log(course_id);
-    const redirect = `/courses/${course_id}`;
+    let course_id = -1;
+    let redirect = `/courses`;
+    if (!(typeof props.location.state === 'undefined')) {
+        course_id = props.location.state['course_id'];
+        redirect = `/courses/${course_id}`;
+    }
     return (
         <Create {...props}>
             <SimpleForm

@@ -8,6 +8,7 @@ import {
     NumberInput,
 } from 'react-admin';
 import { makeStyles } from '@material-ui/core/styles';
+import ProgramOutcome from './ProgramOutcome';
 
 const ProgramTitle = ({ record }) => {
     const translate = useTranslate();
@@ -27,7 +28,11 @@ const useEditStyles = makeStyles({
 const ProgramEdit = props => {
     const classes = useEditStyles();
     return (
-        <Edit title={<ProgramTitle />} classes={classes} {...props}>
+        <Edit 
+            title={<ProgramTitle />} 
+            classes={classes} 
+            aside={<ProgramOutcome />}
+            {...props}>
             <SimpleForm>
                 <TextInput source="name" />
                 <TextInput source="department_name" />

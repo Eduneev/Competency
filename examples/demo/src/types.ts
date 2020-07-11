@@ -108,7 +108,7 @@ export interface Semester {
     name: string;
 }
 
-export interface ProgramOutcome {
+export interface ProgramOutcome extends Record {
     program_id: Identifier;
     description: string;
 }

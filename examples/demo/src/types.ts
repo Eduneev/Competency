@@ -118,6 +118,11 @@ export interface CourseOutcome extends Record {
     description: string;
 }
 
+export interface CohortMap extends Record {
+    cohort_id: Identifier;
+    course_id: Identifier;
+}
+
 /**
  * Types to eventually add in react-admin
  */

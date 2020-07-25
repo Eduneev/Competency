@@ -19,6 +19,7 @@ import institute from '../institutes';
 import cohorts from '../cohorts';
 import programs from '../programs';
 import courses from '../courses';
+import copomapping from '../copomapping';
 
 type MenuName =
     | 'menuCatalog'
@@ -195,6 +196,16 @@ const Menu: FC<Props> = ({ onMenuClick, dense, logout }) => {
                         smart_count: 2,
                     })}
                     leftIcon={<courses.icon />}
+                    onclick={onMenuClick}
+                    sidebarIsOpen={open}
+                    dense={dense}
+                />
+                <MenuItemLink
+                    to={'/copomapping'}
+                    primaryText={translate('resources.copomapping.name', {
+                        smart_count: 2,
+                    })}
+                    leftIcon={<copomapping.icon />}
                     onclick={onMenuClick}
                     sidebarIsOpen={open}
                     dense={dense}

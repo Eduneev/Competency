@@ -226,6 +226,12 @@ const customEnglishMessages: TranslationMessages = {
                 description: 'Description',
             }
         },
+        copomapping: {
+            name: 'CO - PO Mapping',
+            fields: {
+                correlation: 'Correlation between CO and PO',
+            },
+        },
         segments: {
             name: 'Segments',
             fields: {

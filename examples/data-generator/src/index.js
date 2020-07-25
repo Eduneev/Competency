@@ -11,6 +11,7 @@ import generateCohorts from './cohorts';
 import generateProgramOutcomes from './programoutcomes';
 import generateCourses from './courses';
 import generateCourseOutcomes from './courseoutcomes';
+import generateCoPoMapping from './copomapping';
 
 export default (options = { serializeDate: true }) => {
     const db = {};
@@ -26,6 +27,7 @@ export default (options = { serializeDate: true }) => {
     db.cohorts = generateCohorts(db, options);
     db.programoutcomes = generateProgramOutcomes(db, options);
     db.courseoutcomes = generateCourseOutcomes(db, options);
+    db.copomapping = generateCoPoMapping(db, options);
     finalize(db);
 
     return db;

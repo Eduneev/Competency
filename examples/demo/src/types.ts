@@ -118,6 +118,12 @@ export interface CourseOutcome extends Record {
     description: string;
 }
 
+export interface CoPoMapping {
+    courseoutcome_id: Identifier,
+    programoutcome_id: Identifier,
+    correlation: number,
+}
+
 /**
  * Types to eventually add in react-admin
  */

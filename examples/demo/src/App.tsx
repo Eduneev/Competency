@@ -24,6 +24,7 @@ import cohorts from './cohorts';
 import programoutcomes from './programoutcomes';
 import courses from './courses';
 import courseoutcomes from './courseoutcomes';
+import copomapping from './copomapping';
 
 import dataProviderFactory from './dataProvider';
 import fakeServerFactory from './fakeServer';
@@ -97,6 +98,7 @@ const App = () => {
             <Resource name="programoutcomes" {...programoutcomes} />
             <Resource name="courses" {...courses} />
             <Resource name="courseoutcomes" {...courseoutcomes} />
+            <Resource name="copomapping" {...copomapping} />
         </Admin>
     );
 };

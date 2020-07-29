@@ -83,6 +83,7 @@ export interface Cohort extends Record {
     start_date: Date;
     end_date: Date;
     num_programs: number;
+    list_courses: Course[];
 }
 
 export interface Program extends Record {

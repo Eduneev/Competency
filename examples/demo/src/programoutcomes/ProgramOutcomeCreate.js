@@ -10,7 +10,7 @@ import {
     ReferenceInput,
     AutocompleteInput,
 } from 'react-admin';
-import CancelButton from './CancelButton';
+import CancelButton from '../tools/CancelButton';
 
 const ProgramOutcomeCreateToolbar = translate(({ translate, ...props }) => (
     <Toolbar {...props}>

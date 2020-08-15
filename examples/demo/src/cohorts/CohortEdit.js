@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Grid from '@material-ui/core/Grid'
 import {
     Edit,
     SimpleForm,
@@ -37,13 +38,16 @@ const CohortEdit = (props) => {
             classes={classes} */}
         
             <SimpleForm>
+            <Grid container>
+                <Grid item xs={6}>
                 <TextInput source="name" />
-                <TextInput source="name" reference="programs" {...props} />
+                <TextInput source="institute_id" />
                 <DateInput source="start_date" />
                 <DateInput source="end_date" />
-                <TextInput source="list_courses.name" />
+                {/*<TextInput source="list_courses"/>*/}
                 <BooleanInput source="active" />
-
+                </Grid>
+                <Grid item xs={6}>
                 <ReferenceArrayInput
                     source="list_courses"
                     reference="courses"
@@ -53,8 +57,9 @@ const CohortEdit = (props) => {
                     {/* <AutocompleteInput
                         optionText={choice => `${choice.name}`}
                     /> */}
-                </ReferenceArrayInput>
-
+                </ReferenceArrayInput>  
+                </Grid>
+            </Grid> 
             </SimpleForm>
         </Edit>
     );
